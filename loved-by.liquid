@@ -1,0 +1,118 @@
+    <section class="prod_loved_by_sec">
+      <img src="{{ section.settings.main-image | img_url : "master" }}" class="erf_img" alt="">   
+        <div class="mm_wrapper">
+          <div class="prod_loved_by_sec_inner">
+            <h3 class="mm_head"> 
+              {{ section.settings.video-title }}
+            </h3>
+            <div class="videos_sec">
+              {% for block in section.blocks %}
+                <div class="col">
+                {{ block.settings.embed-code }}
+                  <p class="video-title">{{ block.settings.video-text }}</p>
+                </div>
+              {% endfor %}
+            </div>
+
+
+              <div class="safe_point">
+                <h2>{{ section.settings.ingre-title }}</h2>
+                  <div class="safe_point_inner">
+                    <div class="kick_point_inner">
+                        <div class="single_kick">
+                          <h3 class="kick_head">{{ product.metafields.custom.ingredient_title }}</h3>
+                          <p class="kick_content">{{ product.metafields.custom.ingrediant_description_1 }}</p>
+                        </div>
+                        <div class="single_kick">
+                          <h3 class="kick_head">{{ product.metafields.custom.ingredient_title_2 }}</h3>
+                          <p class="kick_content">{{ product.metafields.custom.ingrediant_description_2 }}</p>
+                        </div>
+                        <div class="single_kick">
+                          <h3 class="kick_head">{{ product.metafields.custom.ingredient_title_3 }}</h3>
+                          <p class="kick_content">{{ product.metafields.custom.ingrediant_description_3 }}</p>
+                        </div>
+                        <div class="single_kick">
+                          <h3 class="kick_head">{{ product.metafields.custom.ingredient_title_4 }}</h3>
+                          <p class="kick_content">{{ product.metafields.custom.ingrediant_description_4 }}</p>
+                        </div>
+                        <div class="single_kick">
+                          <h3 class="kick_head">{{ product.metafields.custom.ingredient_title_5 }}</h3>
+                          <p class="kick_content">{{ product.metafields.custom.ingrediant_description_5 }}</p>
+                        </div>
+                        <div class="single_kick">
+                          <h3 class="kick_head">{{ product.metafields.custom.ingredient_title_6 }}</h3>
+                          <p class="kick_content">{{ product.metafields.custom.ingrediant_description_6 }}</p>
+                        </div>
+                        <div class="view_btn_outline">
+                          <button class="buy_button">VIEW NUTRITION INFO</button>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </section>
+    <section class="review_sec">
+      <div class="mm_wrapper">
+        <div class="review_sec_inner">
+          <div class="review_head">
+            <h3 class="mm_head mb-0">{{ section.settings.review-title }}</h3>
+            <span class="product_rating">
+              <a href="#looxReviews">
+                <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+{% schema %}
+  {
+    "name": "Product Loved By",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "main-image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "video-title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "ingre-title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "review-title",
+        "label": "Review heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "embed",
+        "name": "Add video",
+        "settings": [
+           {
+              "type": "liquid",
+              "id": "embed-code",
+              "label": "Embed Code"
+           },
+           {
+              "type": "text",
+              "id": "video-text",
+              "label": "Text"
+           },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Loved By"
+      }
+    ]
+  }
+{% endschema %}

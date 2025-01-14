@@ -1,0 +1,399 @@
+    <section class="mm_product_banner">
+      <div class="mm_wrapper">
+        <div class="mm_common_sec_inner">
+            <div class="row g-0">
+              <div class="col-6 prod_bnr_slider">
+                  <div class="prod_content">
+                    <h1 class="prod_head">{{ product.metafields.custom.sub_heading }}</h1>
+                    <h2 class="prod_sub_head">{{ product.title }}</h2>
+                    <div class="prod_estimate"><img src="{{ section.settings.estimate-icon | img_url : 'master' }}" alt="" class="estimate_icon">{{ section.settings.estimate-time }}</div>
+                    <div class="banner_rating">
+                      <a href="#looxReviews">
+                        <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+                      </a> {{ product.metafields.loox.avg_rating }} Star Ratings!
+                    </div>
+
+                    <form action="/cart/add" method="post"class="product_form" enctype="multipart/form-data">
+                      
+                      {% for block in section.blocks %}
+                         {% case block.type %}
+                           {%- when '@app' -%}
+                              {% render block %}
+                          {% endcase %}
+                      {% endfor %}
+                      <div class="selling_plan_group" style="display:none;">
+                      {% for variant in product.variants %}
+                          {% for allocation in variant.selling_plan_allocations  %}
+                            <div class="selling_plans select_subscription">
+                               <input type="radio" name="selling_plan" {% if forloop.first and forloop.parentloop.first %}checked{% endif %} value="{{ allocation.selling_plan.id }}">
+                              <div class="plans_detail">
+                                <span class="plan_name">{{ allocation.selling_plan.name }}</span>
+                                <span class="plan_price">{{ allocation.per_delivery_price | money }}</span>
+                              </div>
+                               </div>
+                          {% endfor %}
+                      {% endfor %}
+                        <div class="selling_plans one_time">
+                          <input type="radio" name="selling_plan" value="">
+                          <div class="plans_detail">
+                                <span class="plan_name">One-time purchase</span>
+                                <span class="plan_price"></span>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="prod_tub_check">
+                      <ul>
+                        {% if product.variants.size == 1 %}
+                          {% assign first_variant = product.variants.first %}
+                          <input type="hidden" value="{{ first_variant.id }}" name="id">
+                          <span class="product_price">{{ product.price | money_with_currency }}</span>
+                        {% else %}
+                        {% for variant in product.variants %}
+
+                          <li class="variant_list">
+                            <input type="radio" id="tub{{ forloop.index }}-{{ section.id }}" value="{{ variant.id }}" class="banner_radio" name="id" {% if forloop.first %} checked {% endif %}>
+                            <label class="variant_label custom-cursor-on-hover" for="tub{{ forloop.index }}-{{ section.id }}">
+                                <div class="save_round">
+                                  <span>Save</span>
+                                  {% if variant.title == "1 Tub" %}
+                                    {{ section.settings.save1 }}%
+                                  {% endif %}
+                                  {% if variant.title == "2 Tub" %}
+                                    {{ section.settings.save2 }}%
+                                  {% endif %}
+                                  {% if variant.title == "3 Tub" %}
+                                    {{ section.settings.save3 }}%
+                                  {% endif %}
+                                </div>
+                                <div class="prod_tub_img">
+                                  {% if variant.title == "1 Tub" %}
+                                    <img src="https://cdn.shopify.com/s/files/1/0701/9233/3055/files/tub.svg" alt="">
+                                  {% endif %}
+                                  {% if variant.title == "2 Tub" %}
+                                    <img src="https://cdn.shopify.com/s/files/1/0701/9233/3055/files/tub2.svg" alt="">
+                                  {% endif %}
+                                  {% if variant.title == "3 Tub" %}
+                                    <img src="https://cdn.shopify.com/s/files/1/0701/9233/3055/files/tub3.svg" alt="">
+                                  {% endif %}
+                                  <h5>{{ variant.title }}</h5>
+                                </div>
+                            </label>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                      </ul>
+                    </div>
+
+                    <div class="subs_link">
+                      <a href="{{ section.settings.subscription-link }}" class="subs_link">{{ section.settings.subscription-text }}</a>
+                    </div>
+
+                    <div class="shop_now">
+                      <!-- <a href="" class="common_button">BUY NOW</a> -->
+                      <input type="submit" class="common_button" value="BUY NOW" />
+                      <span class="instock"><img src="{{ section.settings.instock-icon | img_url: "master" }}" alt="">{{ section.settings.instock-text }}</span>
+                    </div>
+                    </form>
+                    <div class="support_avtar">
+                      <ul>
+                        {% for block in section.blocks %}
+                           {% case block.type %}
+                             {% when 'image-text' %}
+                              <li>
+                               <div class="support_avtar_inner">
+                                    <div class="support_avtar_in">
+                                        <div class="support_img_outter">
+                                          <img src="{{ block.settings.client-img | img_url : "master" }}" alt="" class="support_img">
+                                        </div>
+                                        <h4>{{ block.settings.client-text }}</h4>
+                                    </div>
+                               </div>
+                            </li>
+                          {% endcase %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+                  </div>
+              </div>
+
+                <div class="col-6 prod_bnr_text">
+                    <div class="prod_slider_side">
+                        <div class="prod_slider_sec">
+                          <div class="slider_outter">
+                            <div class="slider slider-single">
+                              {% for image in product.images %} 
+                              <div>
+<div class="slide_img">
+                                <img src="{{ image.src | product_img_url: 'grande' }}" alt="" srcset="">
+                              </div>
+                              </div>
+                              {% endfor %}
+                            </div>
+                            
+                            <div class="slider slider-nav">
+                               {% for image in product.images %} 
+                             <div>
+                                <div class="small_img">
+                                <img src="{{ image.src | product_img_url: 'grande' }}" alt="" srcset="">
+                              </div>
+                             </div>
+                                 
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- tab content -->
+                    <div class="prod_bnr_slider prod_bnr_slider_tab" style="display: none;">
+                      <div class="prod_content">
+                        <h1 class="prod_head">{{ product.title }}</h1>
+                        <h2 class="prod_sub_head">{{ product.metafields.custom.sub_heading }}</h2>
+                        <div class="prod_estimate"><img src="{{ section.settings.estimate-icon | img_url : 'master' }}" alt="" class="estimate_icon">{{ section.settings.estimate-time }}</div>
+                        <div class="banner_rating">
+                          <a href="#looxReviews">
+                            <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+                          </a>
+                        </div>
+                        <form action="/cart/add" class="product_form" method="post" enctype="multipart/form-data">
+                        {% for block in section.blocks %}
+                          {% case block.type %}
+                            {%- when '@app' -%}
+                              {% render block %}
+                          {% endcase %}
+                        {% endfor %}
+                  
+                        <div class="prod_tub_check">
+                        <ul>
+                          {% if product.variants.size == 1 %}
+                          {% assign first_variant = product.variants.first %}
+                          <input type="hidden" value="{{ first_variant.id }}" name="id">
+                          <span class="product_price">{{ product.price | money_with_currency }}</span>
+                          {% else %}
+                          {% for variant in product.variants %}
+                            <li class="variant_list">
+                              <input type="radio" id="tub1-{{ forloop.index }}-{{ section.id }}" value="{{ variant.id }}" class="banner_radio" name="id" {% if forloop.first %} checked {% endif %}>
+                              <label class="variant_label custom-cursor-on-hover" for="tub1-{{ forloop.index }}-{{ section.id }}">
+                                  <div class="save_round">
+                                    <span>Save</span>
+                                    {% if variant.title == "1 Tub" %}
+                                      {{ section.settings.save1 }}
+                                    {% endif %}
+                                    {% if variant.title == "2 Tub" %}
+                                      {{ section.settings.save2 }}
+                                    {% endif %}
+                                    {% if variant.title == "3 Tub" %}
+                                      {{ section.settings.save3 }}
+                                    {% endif %}
+                                  </div>
+                                  <div class="prod_tub_img">
+                                    {% if variant.title == "1 Tub" %}
+                                      <img src="https://cdn.shopify.com/s/files/1/0701/9233/3055/files/tub.svg" alt="">
+                                    {% endif %}
+                                    {% if variant.title == "2 Tub" %}
+                                      <img src="https://cdn.shopify.com/s/files/1/0701/9233/3055/files/tub2.svg" alt="">
+                                    {% endif %}
+                                    {% if variant.title == "3 Tub" %}
+                                      <img src="https://cdn.shopify.com/s/files/1/0701/9233/3055/files/tub3.svg" alt="">
+                                    {% endif %}
+                                    <h5>{{ variant.title }}</h5>
+                                  </div>
+                              </label>
+                          </li>
+                          {% endfor %}
+                          {% endif %}
+                        </ul>
+                        </div>
+    
+                        <div class="subs_link">
+                          <a href="{{ section.settings.subscription-text }}" class="subs_link">{{ section.settings.subscription-text }}</a>
+                        </div>
+    
+                        <div class="shop_now">
+                          <!-- <a href="" class="common_button">BUY NOW</a> -->
+                          <input type="submit" class="common_button" value="BUY NOW" />
+                          <span class="instock"><img src="{{ section.settings.instock-icon | img_url: 'master' }}">{{ section.settings.instock-text }}</span>
+                        </div>
+                      </form>
+                        <div class="support_avtar">
+                          <ul>
+                           {% for block in section.blocks %}
+                           {% case block.type %}
+                             {% when 'image-text' %}
+                              <li>
+                               <div class="support_avtar_inner">
+                                    <div class="support_avtar_in">
+                                        <div class="support_img_outter">
+                                          <img src="{{ block.settings.client-img | img_url : "master" }}" alt="" class="support_img">
+                                        </div>
+                                        <h4>{{ block.settings.client-text }}</h4>
+                                    </div>
+                               </div>
+                            </li>
+                          {% endcase %}
+                        {% endfor %}
+                          </ul>
+                        </div>
+    
+                      </div>
+                  </div>
+
+
+                  <!-- tab content end -->
+
+                    <div class="prod_tags">
+                        <ul>
+                        {% for block in section.blocks %}
+                           {% case block.type %}
+                             {% when 'icon-text' %}
+                             <li>
+                              <div class="prod_tags_inner">
+                                {% if block.settings.icon != blank %}
+                                <img src="{{ block.settings.icon | img_url : "original" }}" alt="" class="prod_tags_icon">{{ block.settings.text }}
+                                {% endif %}
+                              </div>
+                            </li>
+                           {% endcase %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="prod_accordion">
+                        <div class="accordion" id="accordionExample-{{ section.id }}">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne-{{ section.id }}">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{ section.id }}" aria-expanded="true" aria-controls="collapseOne">
+                                {{ section.settings.accordian-text-1 }}
+                              </button>
+                            </h2>
+                            <div id="collapseOne-{{ section.id }}" class="accordion-collapse collapse show" aria-labelledby="headingOne-{{ section.id }}" data-bs-parent="#accordionExample-{{ section.id }}">
+                              <div class="accordion-body">
+                                {{ product.description }}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo-{{ section.id }}">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo-{{ section.id }}" aria-expanded="false" aria-controls="collapseTwo">
+                                {{ section.settings.accordian-text-2 }}
+                              </button>
+                            </h2>
+                            <div id="collapseTwo-{{ section.id }}" class="accordion-collapse collapse" aria-labelledby="headingTwo-{{ section.id }}" data-bs-parent="#accordionExample-{{ section.id }}">
+                              <div class="accordion-body">
+                                <p>{{ product.metafields.custom.shipping_delivery_returns }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+                  
+{% schema %}
+  {
+    "name": "Product Section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "estimate-icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "estimate-time",
+        "label": "Estimate Time"
+      },
+      {
+        "type": "text",
+        "id": "subscription-text",
+        "label": "Subscription Text"
+      },
+      {
+        "type": "text",
+        "id": "subscription-link",
+        "label": "Subscription Link"
+      },
+      {
+        "type": "number",
+        "id": "save1",
+        "label": "Save for 1 tub"
+      },
+      {
+        "type": "number",
+        "id": "save2",
+        "label": "Save for 2 tub"
+      },
+      {
+        "type": "number",
+        "id": "save3",
+        "label": "Save for 3 tub"
+      },
+      {
+        "type": "image_picker",
+        "id": "instock-icon",
+        "label": "stock Icon"
+      },
+      {
+        "type": "text",
+        "id": "instock-text",
+        "label": "stock text"
+      },
+      {
+        "type": "text",
+        "id": "accordian-text-1",
+        "label": "Accordian Title"
+      },
+      {
+        "type": "text",
+        "id": "accordian-text-2",
+        "label": "Accordian Title"
+      }
+    ],
+    "blocks": [
+      {
+      "type": "@app"
+      },
+      {
+        "type": "icon-text",
+        "name": "Icon with text",
+        "settings": [
+           {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Icon"
+           },
+           {
+              "type": "text",
+              "id": "text",
+              "label": "Text"
+           },
+        ]
+      },
+      {
+        "type": "image-text",
+        "name": "Image with text",
+        "settings": [
+           {
+              "type": "image_picker",
+              "id": "client-img",
+              "label": "Image"
+           },
+           {
+              "type": "liquid",
+              "id": "client-text",
+              "label": "Text"
+           }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Section"
+      }
+    ]
+  }
+{% endschema %}

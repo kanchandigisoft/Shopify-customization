@@ -1,0 +1,73 @@
+<section class="how_to_use">
+      <div class="mm_wrapper">
+        <div class="how_to_use_inner">
+            <div class="row g-0">
+              <div class="col-auto">
+                <div class="how_work_img">
+                  <img src="{{ product.metafields.custom.how_to_use_image | img_url : "original" }}" alt="" class="">
+                </div>
+              </div>
+              <div class="col">
+                <div class="context_side">
+                  <h3 class="mm_head">{{ section.settings.heading }}</h3>
+                  <h5>{{ section.settings.desc }}</h5>
+                  <div class="how_work_img_tab" style="display: none;">
+                    <img src="images/how.png" alt="" class="">
+                  </div>
+                    <ul class="mm_use_list">
+                      <li>
+                        <div class="mm_use_list_inner">
+                          <img src="{{ product.metafields.custom.step_1_icon | img_url : "master" }}" alt="" class="spoon_img">
+                          <div class="mm_use_list_cont">
+                            <h4>{{ product.metafields.custom.step_1 }}</h4>
+                            <p>{{ product.metafields.custom.description_1 }}</p>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="mm_use_list_inner">
+                          <img src="{{ product.metafields.custom.step_2_icon | img_url : "master" }}" alt="" class="ice_img">
+                          <div class="mm_use_list_cont">
+                            <h4>{{ product.metafields.custom.step_2 }}</h4>
+                            <p>{{ product.metafields.custom.description_2 }}</p>
+                          </div>
+                        </div>
+                      </li> 
+                      <li>
+                        <div class="mm_use_list_inner">
+                          <img src="{{ product.metafields.custom.step_3_icon | img_url : "master" }}" alt="" class="water_img">
+                          <div class="mm_use_list_cont">
+                            <h4>{{ product.metafields.custom.step_3 }}</h4>
+                            <p>{{ product.metafields.custom.description_3 }}</p></div>
+                        </div>
+                      </li> 
+                      
+                    </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+{% schema %}
+  {
+    "name": "How to use",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "desc",
+        "label": "text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "How to use"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,312 @@
+    @media only screen and (max-width:1400px)
+{
+
+}
+
+@media only screen and (max-width:1199.78px)
+{
+   
+    
+    
+}
+
+@media only screen and (max-width:1125px)
+{
+    
+}
+
+/* Navbar responsive */
+@media only screen and (max-width:991.78px)
+{
+  
+}
+
+@media only screen and (max-width:845px)
+{
+
+}
+
+
+@media only screen and (min-width:768px) and (max-width:991px){
+
+}
+
+
+
+@media only screen and (min-width:992px)
+{
+   
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width:1339px)
+{
+    
+   
+
+}
+
+@media only screen and (max-width:1199.78px)
+{
+   
+    
+}
+
+@media only screen and (max-width:1125px)
+{
+    
+}
+
+
+@media only screen and (max-width:1199px)
+{
+   
+    .logo_div img.desktop_logo {
+        height: 45px;
+    }
+    .mm_nav_links {
+        display: none;
+    }
+    .cart_div {
+        flex: 1;
+    }
+    .cart_div ul {
+        justify-content: flex-end;
+    }
+
+    .open_search {
+        width: calc(100% + 100px);
+        margin-left: -50px;
+    }
+    .mm_search_button {
+        right: 20px;
+        padding: 0;
+    }
+    .hamburger_menu
+{
+    display: block;
+}
+.mm_inner__header {
+    padding: 23px 0;
+}
+.mobile_navs
+{
+    display: block;
+}
+
+.nav_bar_open .mobile_navs
+{
+    visibility: visible;
+    opacity: 1;
+    z-index: 9;
+
+}
+body.search_bar_open.nav_bar_open .mobile_navs {
+    padding-top: 140px;
+}
+ 
+}
+
+@media only screen and (max-width:845px)
+{
+   
+}
+
+
+@media only screen and (min-width:768px) and (max-width:991px){
+
+}
+
+
+
+@media only screen and (max-width:767.5px)
+{
+  
+    .mm_wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .open_search, .mobile_navs {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+    }
+
+    
+    
+}
+
+
+@media only screen and (max-width:575.5px){
+    .notification_bar p {
+        font-size: 14px;
+    }
+    .notification_bar p img {
+        width: 14px;
+    }
+    .mobile_logo
+    {
+        display: block;
+        height: 39px;
+    }
+    .desktop_logo
+    {
+        display: none;
+    }
+    .cart_div ul > li > a > img {
+        height: 26px;
+    }
+    .cart_div ul {
+        grid-gap: 24px;
+    }
+
+    .cart_div ul > li > a .item_count {
+        height: 18px;
+        width: 18px;
+        line-height: 17px;
+        bottom: -7px;
+        right: -7px;
+    }
+
+    .cart_div ul > li.hamburger_menu img {
+        height: 21px;
+        margin-left: 6px;
+    }
+
+    .mm_wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    img.default_search_icon {
+        height: 23px !important;
+    }
+    .search_bar_open .close_icon_search {
+        display: block;
+        height: 21px;
+    }
+    .nav_bar_open .cart_div ul > li.hamburger_menu  .menu_icon_close {
+        height: 21px;
+        width: 23.17px;
+    }
+    input.mm_input_search {
+        height: 70px;
+        font-size: 22px;
+        letter-spacing: -0.44px;
+    }
+    .mm_search_button  svg {
+        width: 23px;
+    }
+    .mm_search_button {
+        right: 16px;
+    }
+
+    .open_search, .mobile_navs {
+        width: calc(100% + 32px);
+        margin-left: -16px;
+    }
+    .mobile_navs {
+        padding: 24px 16px;
+    }
+
+    body.search_bar_open.nav_bar_open .mobile_navs {
+        padding-top: 94px;
+    }
+  
+}
+
+@media only screen  and (max-width:400.5px){
+        
+    
+}
+
+
+
+
+
+
+@media only screen and (min-width:1519px)
+{
+   
+}
+
+@media only screen and (min-width:1688px)
+{
+   
+}
+
+@media only screen and (min-width:1899px)
+{
+   
+}
+
+@media only screen and (min-width:2025px)
+{
+    
+}
+
+
+@media only screen and (min-width:2278px)
+{
+    
+}
+
+/* @media only screen and (min-width:2600px)
+{
+    :root
+    {
+        font-size: 112.5%;
+    }
+}
+
+
+@media only screen and (min-width:2800px)
+{
+    :root {
+        font-size: 125.5%;
+    }
+} */
+
+@media only screen and (min-width:3038px)
+{
+    
+}
+
+@media only screen and (min-width:4557px)
+{
+   
+}
+
+@media only screen and (min-width:6076px)
+{
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
